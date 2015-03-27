@@ -5,18 +5,28 @@ This is a simple test application.
 The Test Assignment
 
 Design and implement the API and server side modules for a simplified twitter-like social updates site:
+
 ●	The application contains users
+
 ●	Each user can post short text messages (140 chars)
+
 ●	Each user can follow other users, and get a feed of their latest updates. 
+
 ●	Each user can also get a global feed for all the users.
+
  
 Implement an HTTP based (ReSTful in the loose sense of the term) API that exposes the following calls (no need for authentication, choose the format you like):
  
 ●	CreateUser [UserName]
+
 ●	PostMessage [UserId, MessageText]
+
 ●	Follow [FollowingUser, FollowedUser]
+
 ●	Unfollow [FollwingUser, UnfollowedUser]
+
 ●	GetFeed [ForUserId]
+
 ●	GetGlobalFeed
 
 The design should be ready for heavy traffic web application, with many users and interactions. The design need to be ready for this situation. Please bear in mind the scalability of this system and try to find a good solution for a large scale application.
