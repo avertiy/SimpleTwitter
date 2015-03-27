@@ -31,6 +31,10 @@ Implement an HTTP based (ReSTful in the loose sense of the term) API that expose
 
 The design should be ready for heavy traffic web application, with many users and interactions. The design need to be ready for this situation. Please bear in mind the scalability of this system and try to find a good solution for a large scale application.
 
+For inspiration was used the Twitter architectural review (Matthijs Neppelenbroek) 
+http://www.timdeboer.eu/paper_publishing/Twitter_An_Architectural_Review.pdf
+
+
 1. To achieve the main goal - messaging architecture is selected based on NServiceBus combined with CQRS approach without Event sourcing, as the ES is not needed in this app.
 2. A simple UI is based on AngularJS and Bootstrap
 3. RESTful service is a WebApi with asyncronous methods
@@ -50,3 +54,9 @@ In production console applications better to convert into IIS hosted web service
 
 patterns used: CQRS pattern without Event sourcing, Repository + GenericRepository, Unit of Work
 technologies used: NServiceBus (sender-> publisher -> subscriber), Redis (with StackExchange client), WCF, WebAPi
+
+Further optimizations:
+
+Read models could be separated on recent data stored in on logical redis database (limited set contains last 100 posts(tweets) of each user) and the archived data stored in another logical redis db, b/c users will not list more than 10 pages of tweets (10 tweets per page) so the scan can be faster if the set will be limited
+
+
