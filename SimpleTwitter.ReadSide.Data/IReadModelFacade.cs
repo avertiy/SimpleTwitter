@@ -19,7 +19,7 @@ namespace SimpleTwitter.ReadSide.Data
         Task<DTOGetFollowersResponse> GetFollowingsAsync(Guid userid);
         Task<DTOGetFollowersResponse> GetFollowersAsync(Guid userid);
     }
-    public class ReadModelFacade : ReadSideService, IReadModelFacade
+    public class ReadModelFacade : ReadSideService, IReadModelFacade   //todo: refactoring it would be better to provide only Read access from ReadModelFacade
     {
         public ReadModelFacade(IDatabase db)
             : base(db)
