@@ -1,0 +1,65 @@
+﻿<style>
+    tr a {
+        opacity: 0.2;
+    }
+    tr:hover a {
+        opacity: 1.0;
+    }
+</style>
+
+<div class="container">
+        <div class="row-fluid">
+            <div class="span7">
+                <fieldset>
+                    <legend>
+                        User list
+                        <a class="btn btn-link" ng-click="createUser()"><i class="icon-plus-sign"></i> Add User</a>
+                    </legend>
+                    
+
+                    <table class="table table-condensed table-hover">
+                        <thead>
+                            <tr>
+                                <th class="span1">&nbsp;</th>
+                                <th class="span2">Name</th>
+                                <th class="span3">Id</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="user in users">
+                                <td class="input-append">
+                                    <a class="btn btn-link" ng-click="viewUser(user.Id)"><i class="icon-eye-open"></i></a>
+                                </td>
+                                <td>{{user.UserName}}</td>
+                                <td>{{user.Id}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </fieldset>
+            </div>
+            <div class="span5">
+                <fieldset>
+                    <legend>Global Feed</legend>
+                    <table class="table table-condensed table-hover">
+                        <thead>
+                            <tr>
+                                <th class="span1">User</th>
+                                <th class="span2">Tweet</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="tweet in globalfeed">
+                                <td>{{tweet.UserName}}</td>
+                                <td>
+                                    <span class="label label-info">
+                                        {{tweet.TimeStamp | date:'yyyy-MM-dd HH:mm'}}
+                                    </span>
+                                    {{tweet.MessageText}}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </fieldset>
+            </div>
+            </div>
+    </div>

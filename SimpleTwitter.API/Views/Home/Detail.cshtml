@@ -1,0 +1,117 @@
+﻿
+<div class="container">
+    <form name="personForm" class="ng-cloak">
+        <h3>
+            {{user.UserName}}
+        </h3>
+        <blockquote>
+            [{{user.Id}}]
+        </blockquote>
+        <div class="control-group">
+            <div class="row-fluid" data-ng-hide="isDeleteRequested">
+                <div class="span12">
+                    <button class="btn" data-ng-click="returnToList()"><i class="icon-remove-sign"></i> Return to List</button>
+                </div>
+            </div>
+            <div class="row-fluid" data-ng-show="isDeleteRequested">
+                <div class="span12">
+                    <button class="btn" data-ng-click="deletePerson()"><i class="icon-trash"></i> Confirm Delete</button>
+                    <button class="btn" data-ng-click="returnToList()"><i class="icon-remove-sign"></i> Cancel</button>
+                </div>
+            </div>
+            <div class="row-fluid" data-ng-show="errorMessage">
+                <div class="span12 text-error">
+                    {{errorMessage}}
+                </div>
+            </div>
+        </div>
+
+        <div class="row-fluid">
+            <div class="span3">
+                <fieldset>
+                    <legend>What's happening?</legend>
+                    <div id="tweetInput" class="controls controls-row">
+                        <textarea rows="3" placeholder="enter text here" id="inputTxt" ng-model="post.MessageText" maxlength="140" ng-trim="false"></textarea>
+                        
+                        <div>
+                            <button class="btn btn-small btn-primary" data-ng-click="tweet()">Tweet</button>
+                            <span >{{140 - post.MessageText.length}} left</span>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="span6">
+                <fieldset>
+                    <legend>Feed</legend>
+                    <table class="table table-condensed table-hover">
+                        <thead>
+                            <tr>
+                                <th class="span1">User</th>
+                                <th class="span2">Tweet</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="tweet in tweets">
+                                <td>{{tweet.UserName}}</td>
+                                <td>
+                                    <span class="label label-info">
+                                        {{tweet.TimeStamp | date:'yyyy-MM-dd HH:mm'}}
+                                    </span>
+                                    {{tweet.MessageText}}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </fieldset>
+                
+
+            </div>
+            
+        </div>
+        <div class="row-fluid">
+            <div class="span3">
+                <fieldset>
+                    <legend>Follow user</legend>
+                    <div class="controls controls-row">
+                        <input type="text" placeholder="enter userid here" id="folowingIdTxt" ng-model="follow.FollowingId" maxlength="36" />
+                        <div>
+                            <button class="btn btn-small btn-info" data-ng-click="followUser()">Follow</button>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+                <div class="span3">
+                    <fieldset>
+                        <legend>Follows</legend>
+                        <table class="table table-condensed table-hover">
+                            <tr ng-repeat="following in user.Followings">
+                                <td>{{following.Value}}</td>
+                                <td>
+                                    <button class="btn btn-mini btn-danger pull-right" data-ng-click="unfollowUser(following.Key)">Unfollow</button>
+                                </td>
+                            </tr>
+                        </table>                       
+                    </fieldset>
+                </div>
+                <div class="span3">
+                    <fieldset>
+                        <legend>Followers</legend>
+                        <table class="table table-condensed table-hover">
+                            <tr ng-repeat="follower in user.Followers">
+                                <td>{{follower.Value}}</td>
+                                <td>
+                                </td>
+                            </tr>
+                        </table>                       
+                    </fieldset>
+                </div>
+            </div>
+            <div class="controls row-fluid">
+                &nbsp;
+            </div>
+
+
+
+</form>        
+
+</div>
